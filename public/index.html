@@ -1,308 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Online Utilities</title>
-
-    <meta
-        name="description"
-        content="Fast, simple online utilities for text, files, networking, developers, and everyday tasks."
-    >
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f6f8;
-            color: #1f2937;
-            line-height: 1.6;
-        }
-
-        header {
-            background: #111827;
-            color: white;
-            padding: 20px 30px;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: #d1d5db;
-            text-decoration: none;
-            margin-left: 20px;
-        }
-
-        nav a:hover {
-            color: white;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 80px 20px 60px;
-            background: white;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #6b7280;
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 35px auto 0;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 16px 20px;
-            font-size: 1rem;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            outline: none;
-        }
-
-        .search-container input:focus {
-            border-color: #2563eb;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: auto;
-            padding: 50px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-        }
-
-        .section-title p {
-            color: #6b7280;
-        }
-
-        .tool-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .tool-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            text-decoration: none;
-            color: #1f2937;
-            border: 1px solid #e5e7eb;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .tool-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .tool-card h3 {
-            margin-bottom: 8px;
-        }
-
-        .tool-card p {
-            color: #6b7280;
-            font-size: 0.95rem;
-        }
-
-        footer {
-            background: #111827;
-            color: #9ca3af;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 700px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            nav {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WidgetYard — Free Online Tools That Work Instantly</title>
+  <meta name="description" content="A collection of fast, private, free browser tools for text, developers, networking, encoding, passwords, and everyday tasks.">
+  <link rel="canonical" href="https://widgetyard.com/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script defer src="/assets/site.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"WidgetYard","url":"https://widgetyard.com/","description":"Fast, free online tools that work in your browser.","potentialAction":{"@type":"SearchAction","target":"https://widgetyard.com/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 </head>
-
-<body>
-
-<header>
-    <div class="header-container">
-        <div class="logo">Online Utilities</div>
-
-        <nav>
-            <a href="#">Home</a>
-            <a href="#tools">Tools</a>
-            <a href="#">About</a>
-        </nav>
+<body class="home-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="/" aria-label="WidgetYard home"><img src="/assets/logo.svg" alt="WidgetYard" width="214" height="46"></a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary"><a href="/">Tools</a><a href="/about/">About</a><a class="nav-cta" href="#tool-search">Find a tool</a></nav>
     </div>
-</header>
-
-
-<section class="hero">
-
-    <h1>Useful Tools. Fast.</h1>
-
-    <p>
-        Free online utilities for text, networking, files,
-        developers, generators, and everyday tasks.
-    </p>
-
-    <div class="search-container">
-        <input
-            type="text"
-            id="toolSearch"
-            placeholder="Search for a tool..."
-            onkeyup="searchTools()"
-        >
-    </div>
-
-</section>
-
-
-<main id="tools">
-
-    <div class="section-title">
-        <h2>Popular Tools</h2>
-        <p>Simple utilities that work right in your browser.</p>
-    </div>
-
-
-    <div class="tool-grid" id="toolGrid">
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">🌐</div>
-            <h3>What's My IP?</h3>
-            <p>See your current public IPv4 or IPv6 address.</p>
-        </a>
-
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">🎲</div>
-            <h3>Random Word Generator</h3>
-            <p>Generate random words instantly.</p>
-        </a>
-
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">🔐</div>
-            <h3>Password Generator</h3>
-            <p>Create secure random passwords.</p>
-        </a>
-
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">🔢</div>
-            <h3>Word Counter</h3>
-            <p>Count words, characters, sentences, and paragraphs.</p>
-        </a>
-
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">🧮</div>
-            <h3>Subnet Calculator</h3>
-            <p>Calculate IPv4 networks, ranges, masks, and hosts.</p>
-        </a>
-
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">📄</div>
-            <h3>File Converter</h3>
-            <p>Convert common file formats quickly.</p>
-        </a>
-
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">{ }</div>
-            <h3>JSON Formatter</h3>
-            <p>Format and validate JSON data.</p>
-        </a>
-
-
-        <a class="tool-card" href="#">
-            <div class="tool-icon">⏱️</div>
-            <h3>Unix Timestamp</h3>
-            <p>Convert Unix timestamps to readable dates.</p>
-        </a>
-
-    </div>
-
-</main>
-
-
-<footer>
-    <p>
-        © 2026 Online Utilities. Free tools for everyday use.
-    </p>
-</footer>
-
-
-<script>
-
-function searchTools() {
-
-    const input =
-        document.getElementById("toolSearch").value.toLowerCase();
-
-    const cards =
-        document.querySelectorAll(".tool-card");
-
-    cards.forEach(card => {
-
-        const text =
-            card.innerText.toLowerCase();
-
-        if (text.includes(input)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-}
-
-</script>
-
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow"><span></span> Open all day. No sign-up.</p>
+          <h1>The handy corner of the internet.</h1>
+          <p class="hero-copy">Straightforward tools for everyday digital jobs. Fast, free, and designed to get out of your way.</p>
+          <form class="tool-search" role="search" action="/" method="get">
+            <label for="tool-search">Find the right tool</label>
+            <div class="search-box"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg><input id="tool-search" name="q" type="search" placeholder="Try “password” or “JSON”" autocomplete="off"><kbd>/</kbd></div>
+            <p class="search-status" id="search-status" aria-live="polite">10 tools ready to use</p>
+          </form>
+        </div>
+        <div class="yard-mark" aria-hidden="true"><div class="yard-sign"><span>WIDGET</span><strong>YARD</strong><small>USEFUL THINGS, WELL MADE</small></div></div>
+      </div>
+    </section>
+    <div class="ad-slot shell" aria-label="Reserved advertisement space"><span>Advertisement</span></div>
+    <section class="directory shell" aria-labelledby="directory-title">
+      <div class="section-heading"><div><p class="eyebrow"><span></span> Tool directory</p><h2 id="directory-title">Pick a job. Get it done.</h2></div><div class="category-filters" aria-label="Filter tools"><button class="chip is-active" data-filter="all" type="button">All</button><button class="chip" data-filter="generate" type="button">Generate</button><button class="chip" data-filter="text" type="button">Text & data</button><button class="chip" data-filter="network" type="button">Network</button><button class="chip" data-filter="convert" type="button">Convert</button></div></div>
+      <div class="tool-grid" id="tool-grid">
+        <a class="tool-card" data-category="network" href="/tools/whats-my-ip/"><span class="tool-no">01</span><span class="tool-icon">IP</span><h3>What’s My IP</h3><p>See your public internet address and IP version.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="generate" href="/tools/password-generator/"><span class="tool-no">02</span><span class="tool-icon">•••</span><h3>Password Generator</h3><p>Create strong, customizable passwords locally.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="generate" href="/tools/random-word-generator/"><span class="tool-no">03</span><span class="tool-icon">Aa</span><h3>Random Word Generator</h3><p>Pull a fresh set of words for ideas or games.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="text" href="/tools/word-counter/"><span class="tool-no">04</span><span class="tool-icon">123</span><h3>Word Counter</h3><p>Count words, characters, sentences, and reading time.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="network" href="/tools/subnet-calculator/"><span class="tool-no">05</span><span class="tool-icon">/24</span><h3>Subnet Calculator</h3><p>Calculate IPv4 masks, ranges, and usable hosts.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="text" href="/tools/json-formatter/"><span class="tool-no">06</span><span class="tool-icon">{ }</span><h3>JSON Formatter</h3><p>Validate, format, or minify JSON in your browser.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="convert" href="/tools/unix-timestamp-converter/"><span class="tool-no">07</span><span class="tool-icon">00:</span><h3>Unix Timestamp</h3><p>Convert between Unix time and readable dates.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="convert" href="/tools/base64-encode-decode/"><span class="tool-no">08</span><span class="tool-icon">64</span><h3>Base64 Encode / Decode</h3><p>Translate UTF-8 text to or from Base64.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="convert" href="/tools/url-encode-decode/"><span class="tool-no">09</span><span class="tool-icon">%</span><h3>URL Encode / Decode</h3><p>Safely encode or decode URL text and parameters.</p><span class="tool-link">Open tool <b>→</b></span></a>
+        <a class="tool-card" data-category="generate" href="/tools/random-number-generator/"><span class="tool-no">10</span><span class="tool-icon">#</span><h3>Random Number Generator</h3><p>Generate one or many random numbers in a range.</p><span class="tool-link">Open tool <b>→</b></span></a>
+      </div>
+      <div class="empty-state" id="empty-state" hidden><strong>No tools found.</strong><p>Try a shorter search or choose another category.</p></div>
+    </section>
+    <section class="promise"><div class="shell promise-grid"><div><p class="eyebrow light"><span></span> The yard rules</p><h2>Useful first.<br>Everything else second.</h2></div><div class="promise-list"><p><b>01</b><span><strong>No accounts</strong>Open a tool and start immediately.</span></p><p><b>02</b><span><strong>Privacy by default</strong>Most work stays right in your browser.</span></p><p><b>03</b><span><strong>Built for speed</strong>No bloated dashboards or distractions.</span></p></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="shell footer-grid"><a class="brand footer-brand" href="/"><img src="/assets/logo-light.svg" alt="WidgetYard" width="214" height="46"></a><p>Small tools for getting unstuck.</p><nav aria-label="Footer"><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></nav><p class="copyright">© <span data-year></span> WidgetYard</p></div></footer>
 </body>
 </html>
