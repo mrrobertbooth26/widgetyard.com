@@ -1,5 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <path fill="#0F172A" d="M23 2h18l2 8 5 2 7-4 7 12-7 5v6l7 5-7 12-8-3-5 3-1 9H23l-2-9-5-3-8 3-7-12 7-5v-6l-7-5L8 8l8 4 5-2z"/>
-  <circle cx="32" cy="30" r="17" fill="#fff"/>
-  <path fill="#2563EB" d="M19 17a12 12 0 0 0 13 15l12 12a5 5 0 1 0 7-7L39 25a12 12 0 0 0-15-13l7 7-5 5zM46 40a2.5 2.5 0 1 1-3.5 3.5A2.5 2.5 0 0 1 46 40Z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="#0F172A"/><defs><rect id="tooth" x="27" y="7" width="10" height="14" rx="2"/></defs><g fill="#fff"><circle cx="32" cy="32" r="20"/><use href="#tooth"/><use href="#tooth" transform="rotate(45 32 32)"/><use href="#tooth" transform="rotate(90 32 32)"/><use href="#tooth" transform="rotate(135 32 32)"/><use href="#tooth" transform="rotate(180 32 32)"/><use href="#tooth" transform="rotate(225 32 32)"/><use href="#tooth" transform="rotate(270 32 32)"/><use href="#tooth" transform="rotate(315 32 32)"/></g><circle cx="32" cy="32" r="14" fill="#0F172A"/><g transform="rotate(45 32 32)"><circle cx="32" cy="24" r="11" fill="#1687F8"/><rect x="28" y="23" width="8" height="31" rx="4" fill="#1687F8"/><path d="m25 11 7 10 7-10V7H25Z" fill="#0F172A"/></g></svg>
