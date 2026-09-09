@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://widgetyard.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://widgetyard.com/tools/whats-my-ip/</loc></url>
+  <url><loc>https://widgetyard.com/tools/password-generator/</loc></url>
+  <url><loc>https://widgetyard.com/tools/random-word-generator/</loc></url>
+  <url><loc>https://widgetyard.com/tools/word-counter/</loc></url>
+  <url><loc>https://widgetyard.com/tools/subnet-calculator/</loc></url>
+  <url><loc>https://widgetyard.com/tools/json-formatter/</loc></url>
+  <url><loc>https://widgetyard.com/tools/unix-timestamp-converter/</loc></url>
+  <url><loc>https://widgetyard.com/tools/base64-encode-decode/</loc></url>
+  <url><loc>https://widgetyard.com/tools/url-encode-decode/</loc></url>
+  <url><loc>https://widgetyard.com/tools/random-number-generator/</loc></url>
+  <url><loc>https://widgetyard.com/about/</loc><priority>0.5</priority></url>
+   <url><loc>https://widgetyard.com/privacy/</loc><priority>0.3</priority></url>
+  <url><loc>https://widgetyard.com/terms/</loc><priority>0.3</priority></url>
+</urlset>

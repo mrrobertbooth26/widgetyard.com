@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 140" role="img" aria-labelledby="title desc">
+  <title id="title">WidgetYard</title><desc id="desc">A white gear with a blue wrench beside the WidgetYard name and tagline.</desc>
+  <defs><rect id="tooth" x="45" y="2" width="20" height="31" rx="4"/></defs>
+  <g transform="translate(4 12)">
+    <g fill="#fff"><circle cx="55" cy="55" r="43"/><use href="#tooth"/><use href="#tooth" transform="rotate(45 55 55)"/><use href="#tooth" transform="rotate(90 55 55)"/><use href="#tooth" transform="rotate(135 55 55)"/><use href="#tooth" transform="rotate(180 55 55)"/><use href="#tooth" transform="rotate(225 55 55)"/><use href="#tooth" transform="rotate(270 55 55)"/><use href="#tooth" transform="rotate(315 55 55)"/></g>
+    <circle cx="55" cy="55" r="31" fill="#0F172A"/>
+    <g transform="rotate(45 55 55)"><circle cx="55" cy="32" r="21" fill="#1687F8"/><rect x="47" y="31" width="16" height="66" rx="8" fill="#1687F8"/><path d="M41 6 55 25 69 6V0H41Z" fill="#0F172A"/></g>
+  </g>
+  <text x="130" y="80" fill="#fff" font-family="Inter,Poppins,Arial,Helvetica,sans-serif" font-size="67" font-weight="800" letter-spacing="-3">Widget<tspan fill="#1687F8">Yard</tspan></text>
+  <text x="134" y="116" fill="#E2E8F0" font-family="Inter,Poppins,Arial,Helvetica,sans-serif" font-size="23" font-weight="400" letter-spacing="-.35">The tools you need. Right when you need them.</text>
+</svg>
