@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/assets/site.css">
   <script defer src="/assets/site.js"></script>
   <script defer src="/assets/tools.js"></script>
-</head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3998451996951530" crossorigin="anonymous"></script></head>
 <body data-tool="ip">
   <a class="skip-link" href="#main">Skip to content</a><div data-site-header></div>
   <main id="main">
@@ -35,12 +35,16 @@
                 <div><small>Approximate location</small><strong id="ip-location">—</strong></div>
                 <div><small>Country</small><strong id="ip-country">—</strong></div>
                 <div><small>Timezone</small><strong id="ip-timezone">—</strong></div>
-                <div><small>Approximate coordinates</small><strong id="ip-coordinates">—</strong><a id="ip-map-link" class="map-link" href="#" target="_blank" rel="noopener noreferrer" hidden>View map ↗</a></div>
+                <div><small>Approximate coordinates</small><strong id="ip-coordinates">—</strong></div>
                 <div><small>Postal area</small><strong id="ip-postal">—</strong></div>
                 <div><small>Connection security</small><strong id="ip-security">—</strong></div>
                 <div><small>HTTP protocol</small><strong id="ip-http">—</strong></div>
                 <div><small>Cloudflare edge</small><strong id="ip-colo">—</strong></div>
               </div>
+              <section class="ip-map-card" id="ip-map-card" aria-labelledby="ip-map-title" hidden>
+                <div class="ip-map-heading"><div><h2 id="ip-map-title">Approximate IP location</h2><p>This map shows the network-level estimate for the active public IP.</p></div><a id="ip-map-link" class="map-link" href="#" target="_blank" rel="noopener noreferrer">Open larger map ↗</a></div>
+                <iframe id="ip-map" title="Map showing the approximate location of the active public IP address" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              </section>
               <p class="status-message" id="status" aria-live="polite" hidden></p>
               <p class="location-note"><strong>Location is approximate.</strong> IP geolocation usually identifies a city or network region—not your device or street address. VPNs, mobile networks, and corporate gateways can show another location.</p>
             </div>

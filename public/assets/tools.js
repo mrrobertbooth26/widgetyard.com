@@ -183,11 +183,20 @@ const WidgetTools = (() => {
       $("#ip-security").textContent = connection.tlsVersion || "Unavailable";
       $("#ip-http").textContent = connection.httpProtocol || "Unavailable";
       $("#ip-colo").textContent = connection.cloudflareColo || "Unavailable";
-      const map = $("#ip-map-link");
-      if (location.latitude && location.longitude) {
-        map.href = `https://www.openstreetmap.org/?mlat=${encodeURIComponent(location.latitude)}&mlon=${encodeURIComponent(location.longitude)}#map=10/${encodeURIComponent(location.latitude)}/${encodeURIComponent(location.longitude)}`;
-        map.hidden = false;
-      } else { map.hidden = true; }
+      const mapCard = $("#ip-map-card"), mapFrame = $("#ip-map"), mapLink = $("#ip-map-link");
+      const latitude = Number(location.latitude), longitude = Number(location.longitude);
+      if (Number.isFinite(latitude) && Number.isFinite(longitude)) {
+        const embedUrl = new URL("https://www.openstreetmap.org/export/embed.html");
+        embedUrl.searchParams.set("bbox", [longitude - .12, latitude - .08, longitude + .12, latitude + .08].join(","));
+        embedUrl.searchParams.set("layer", "mapnik");
+        embedUrl.searchParams.set("marker", `${latitude},${longitude}`);
+        mapFrame.src = embedUrl.href;
+        mapLink.href = `https://www.openstreetmap.org/?mlat=${encodeURIComponent(latitude)}&mlon=${encodeURIComponent(longitude)}#map=10/${encodeURIComponent(latitude)}/${encodeURIComponent(longitude)}`;
+        mapCard.hidden = false;
+      } else {
+        mapFrame.removeAttribute("src");
+        mapCard.hidden = true;
+      }
     };
     const load = async () => {
       button.disabled = true; setStatus(""); emptyDetails();
