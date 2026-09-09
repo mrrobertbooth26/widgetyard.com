@@ -1,3 +1,69 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>What’s My IP Address? — WidgetYard</title><meta name="description" content="See your current public IPv4 or IPv6 address instantly, then copy it with one click."><link rel="canonical" href="https://widgetyard.com/tools/whats-my-ip/"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script><script defer src="/assets/tools.js"></script></head>
-<body data-tool="ip"><a class="skip-link" href="#main">Skip to content</a><div data-site-header></div><main id="main"><section class="page-hero"><div class="shell"><p class="breadcrumbs"><a href="/">Tools</a><span>→</span><span>Network</span></p><h1>What’s My IP?</h1><p class="page-intro">See the public IP address this device is using to reach the internet.</p></div></section><div class="ad-slot shell"><span>Advertisement</span></div>
-<section class="tool-page-main shell"><div class="tool-layout"><div><div class="tool-panel"><div class="panel-bar"><strong>Public address</strong><span class="privacy-note">Live network lookup</span></div><div class="tool-body"><div class="result-box" style="margin-top:0"><h2>Your IP address</h2><div class="result-value" id="ip-value" aria-live="polite">Checking…</div><p>Version: <strong id="ip-version">—</strong></p><div class="button-row"><button class="button" id="copy-ip" type="button">Copy address</button><button class="button secondary" id="refresh-ip" type="button">Check again</button></div></div><p class="status-message" id="status" aria-live="polite" hidden></p></div></div><article class="tool-content"><h2>What is a public IP address?</h2><p>Your public IP address identifies your internet connection to websites and online services. It may be shared by several devices on your home or office network.</p><h2>Why might it change?</h2><p>Many internet providers assign dynamic addresses that can change after a router restart or over time. A VPN or proxy can also show a different public address.</p></article></div><aside class="tool-sidebar"><div class="ad-slot sidebar-ad"><span>Advertisement</span></div><div class="sidebar-card"><h2>Try another tool</h2><ul class="sidebar-links"><li><a href="/tools/subnet-calculator/">Subnet Calculator <span>→</span></a></li><li><a href="/tools/password-generator/">Password Generator <span>→</span></a></li><li><a href="/tools/json-formatter/">JSON Formatter <span>→</span></a></li></ul></div></aside></div></section></main><div data-site-footer></div></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>What’s My IPv4 & IPv6 Address? — WidgetYard</title>
+  <meta name="description" content="See your public IPv4 and IPv6 addresses, ISP, ASN, approximate location, timezone, coordinates, and connection details.">
+  <link rel="canonical" href="https://widgetyard.com/tools/whats-my-ip/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script defer src="/assets/site.js"></script>
+  <script defer src="/assets/tools.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3998451996951530" crossorigin="anonymous"></script></head>
+<body data-tool="ip">
+  <a class="skip-link" href="#main">Skip to content</a><div data-site-header></div>
+  <main id="main">
+    <section class="page-hero"><div class="shell"><p class="breadcrumbs"><a href="/">Tools</a><span>→</span><span>Network</span></p><h1>What’s My IP?</h1><p class="page-intro">See your public IPv4 and IPv6 addresses, internet provider, approximate location, and connection details.</p></div></section>
+    <div class="ad-slot shell"><span>Advertisement</span></div>
+    <section class="tool-page-main shell">
+      <div class="tool-layout">
+        <div>
+          <div class="tool-panel">
+            <div class="panel-bar"><strong>IP connection report</strong><span class="privacy-note">Live network lookup</span></div>
+            <div class="tool-body">
+              <div class="ip-address-grid">
+                <section class="ip-address-card" aria-labelledby="ipv4-title"><div class="ip-card-heading"><h2 id="ipv4-title">IPv4 address</h2><span class="ip-badge" id="ipv4-status">Checking…</span></div><div class="result-value" id="ipv4-value" aria-live="polite">Checking…</div><p class="ip-help">The address used on the original IPv4 internet.</p><button class="button secondary compact" id="copy-ipv4" type="button" disabled>Copy IPv4</button></section>
+                <section class="ip-address-card" aria-labelledby="ipv6-title"><div class="ip-card-heading"><h2 id="ipv6-title">IPv6 address</h2><span class="ip-badge" id="ipv6-status">Checking…</span></div><div class="result-value" id="ipv6-value" aria-live="polite">Checking…</div><p class="ip-help">The newer address format, available when your network supports IPv6.</p><button class="button secondary compact" id="copy-ipv6" type="button" disabled>Copy IPv6</button></section>
+              </div>
+              <div class="ip-section-heading"><div><h2>Network and location details</h2><p>These details describe the address your browser used to reach WidgetYard.</p></div><button class="button" id="refresh-ip" type="button">Check again</button></div>
+              <div class="result-grid ip-details" id="ip-details" aria-live="polite">
+                <div><small>Active public IP</small><strong id="ip-active">Checking…</strong></div>
+                <div><small>Active IP version</small><strong id="ip-active-version">—</strong></div>
+                <div><small>Internet provider / organization</small><strong id="ip-provider">—</strong></div>
+                <div><small>Autonomous system</small><strong id="ip-asn">—</strong></div>
+                <div><small>Approximate location</small><strong id="ip-location">—</strong></div>
+                <div><small>Country</small><strong id="ip-country">—</strong></div>
+                <div><small>Timezone</small><strong id="ip-timezone">—</strong></div>
+                <div><small>Approximate coordinates</small><strong id="ip-coordinates">—</strong></div>
+                <div><small>Postal area</small><strong id="ip-postal">—</strong></div>
+                <div><small>Connection security</small><strong id="ip-security">—</strong></div>
+                <div><small>HTTP protocol</small><strong id="ip-http">—</strong></div>
+                <div><small>Cloudflare edge</small><strong id="ip-colo">—</strong></div>
+              </div>
+              <section class="ip-map-card" id="ip-map-card" aria-labelledby="ip-map-title" hidden>
+                <div class="ip-map-heading"><div><h2 id="ip-map-title">Approximate IP location</h2><p>This map shows the network-level estimate for the active public IP.</p></div><a id="ip-map-link" class="map-link" href="#" target="_blank" rel="noopener noreferrer">Open larger map ↗</a></div>
+                <iframe id="ip-map" title="Map showing the approximate location of the active public IP address" loading="lazy" referrerpolicy="no-referrer"></iframe>
+              </section>
+              <p class="status-message" id="status" aria-live="polite" hidden></p>
+              <p class="location-note"><strong>Location is approximate.</strong> IP geolocation usually identifies a city or network region—not your device or street address. VPNs, mobile networks, and corporate gateways can show another location.</p>
+            </div>
+          </div>
+          <article class="tool-content">
+            <h2>Why do I have both IPv4 and IPv6 at the same time?</h2>
+            <p>Many modern connections use “dual stack,” which means they can reach the internet over both IPv4 and IPv6. Websites and apps choose an available route automatically. If the IPv6 check says unavailable, your device, router, VPN, or provider may currently be using IPv4 only.</p>
+            <h2>What do ISP and ASN mean?</h2>
+            <p>The provider or organization is the network that announces your public address. Its autonomous system number, or ASN, is the unique number used to identify that network when internet traffic is routed.</p>
+            <h2>How accurate is the location?</h2>
+            <p>IP location is an estimate based on network registration and routing data. It may identify a nearby city, your provider’s regional gateway, or the endpoint of a VPN. It should never be treated as a precise physical location.</p>
+            <h2>Why might my IP address change?</h2>
+            <p>Many providers assign dynamic addresses that can change after a router restart or over time. Switching Wi-Fi networks, using mobile data, or enabling a VPN can also change the public addresses shown here.</p>
+          </article>
+        </div>
+        <aside class="tool-sidebar"><div class="ad-slot sidebar-ad"><span>Advertisement</span></div><div class="sidebar-card"><h2>Try another tool</h2><ul class="sidebar-links"><li><a href="/tools/subnet-calculator/">Subnet Calculator <span>→</span></a></li><li><a href="/tools/password-generator/">Password Generator <span>→</span></a></li><li><a href="/tools/json-formatter/">JSON Formatter <span>→</span></a></li></ul></div></aside>
+      </div>
+    </section>
+  </main>
+  <div data-site-footer></div>
+</body>
+</html>

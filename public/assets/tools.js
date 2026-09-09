@@ -137,10 +137,92 @@ const WidgetTools = (() => {
     $("#generate-numbers").addEventListener("click", generate); $("#copy-numbers").addEventListener("click", () => copyText($$(".number-chip",output).map((el)=>el.textContent).join(", "),"Numbers")); generate();
   };
 
-  const ip = async () => {
-    const output = $("#ip-value"), version = $("#ip-version"), button = $("#refresh-ip");
-    const load = async () => { button.disabled = true; output.textContent = "Checking…"; setStatus(""); try { const response = await fetch("https://api64.ipify.org?format=json", {cache:"no-store"}); if (!response.ok) throw new Error(); const data = await response.json(); output.textContent = data.ip; version.textContent = data.ip.includes(":") ? "IPv6" : "IPv4"; setStatus("Public IP address found."); } catch { output.textContent = "Unavailable"; version.textContent = "—"; setStatus("We couldn’t reach the IP lookup service. Check your connection and try again.",true); } finally { button.disabled = false; } };
-    button.addEventListener("click",load); $("#copy-ip").addEventListener("click",()=>copyText(output.textContent,"IP address")); load();
+  const ip = () => {
+    const button = $("#refresh-ip");
+    const family = {
+      ipv4: { value: $("#ipv4-value"), status: $("#ipv4-status"), copy: $("#copy-ipv4") },
+      ipv6: { value: $("#ipv6-value"), status: $("#ipv6-status"), copy: $("#copy-ipv6") },
+    };
+    const detailIds = ["active","active-version","provider","asn","location","country","timezone","coordinates","postal","security","http","colo"];
+    const emptyDetails = () => detailIds.forEach((id) => { $(`#ip-${id}`).textContent = id === "active" ? "Checking…" : "—"; });
+    const fetchJson = async (url, timeout = 5000) => {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeout);
+      try {
+        const response = await fetch(url, { cache: "no-store", signal: controller.signal });
+        if (!response.ok) throw new Error(`Request failed with ${response.status}`);
+        return await response.json();
+      } finally { clearTimeout(timer); }
+    };
+    const setFamily = (name, address) => {
+      const item = family[name];
+      if (address) {
+        item.value.textContent = address; item.status.textContent = "Detected"; item.status.classList.add("available"); item.copy.disabled = false;
+      } else {
+        item.value.textContent = "Not available"; item.status.textContent = "Unavailable"; item.status.classList.remove("available"); item.copy.disabled = true;
+      }
+    };
+    const countryName = (code) => {
+      if (!code) return "Unavailable";
+      try { return `${new Intl.DisplayNames([navigator.language || "en"], { type: "region" }).of(code)} (${code})`; }
+      catch { return code; }
+    };
+    const showProfile = (profile) => {
+      const location = profile.location || {}, network = profile.network || {}, connection = profile.connection || {};
+      const area = [location.city, location.regionCode || location.region].filter(Boolean).join(", ");
+      const coordinates = location.latitude && location.longitude ? `${location.latitude}, ${location.longitude}` : "Unavailable";
+      $("#ip-active").textContent = profile.ip || "Unavailable";
+      $("#ip-active-version").textContent = profile.ipVersion || "Unavailable";
+      $("#ip-provider").textContent = network.organization || "Unavailable";
+      $("#ip-asn").textContent = network.asn ? `AS${network.asn}` : "Unavailable";
+      $("#ip-location").textContent = area || "Unavailable";
+      $("#ip-country").textContent = countryName(location.countryCode);
+      $("#ip-timezone").textContent = location.timezone || "Unavailable";
+      $("#ip-coordinates").textContent = coordinates;
+      $("#ip-postal").textContent = location.postalCode || "Unavailable";
+      $("#ip-security").textContent = connection.tlsVersion || "Unavailable";
+      $("#ip-http").textContent = connection.httpProtocol || "Unavailable";
+      $("#ip-colo").textContent = connection.cloudflareColo || "Unavailable";
+      const mapCard = $("#ip-map-card"), mapFrame = $("#ip-map"), mapLink = $("#ip-map-link");
+      const latitude = Number(location.latitude), longitude = Number(location.longitude);
+      if (Number.isFinite(latitude) && Number.isFinite(longitude)) {
+        const embedUrl = new URL("https://www.openstreetmap.org/export/embed.html");
+        embedUrl.searchParams.set("bbox", [longitude - .12, latitude - .08, longitude + .12, latitude + .08].join(","));
+        embedUrl.searchParams.set("layer", "mapnik");
+        embedUrl.searchParams.set("marker", `${latitude},${longitude}`);
+        mapFrame.src = embedUrl.href;
+        mapLink.href = `https://www.openstreetmap.org/?mlat=${encodeURIComponent(latitude)}&mlon=${encodeURIComponent(longitude)}#map=10/${encodeURIComponent(latitude)}/${encodeURIComponent(longitude)}`;
+        mapCard.hidden = false;
+      } else {
+        mapFrame.removeAttribute("src");
+        mapCard.hidden = true;
+      }
+    };
+    const load = async () => {
+      button.disabled = true; setStatus(""); emptyDetails();
+      Object.values(family).forEach((item) => { item.value.textContent = "Checking…"; item.status.textContent = "Checking…"; item.status.classList.remove("available"); item.copy.disabled = true; });
+      const [ipv4Result, ipv6Result, profileResult] = await Promise.allSettled([
+        fetchJson("https://api.ipify.org?format=json"),
+        fetchJson("https://api6.ipify.org?format=json"),
+        fetchJson("/api/ip"),
+      ]);
+      let ipv4 = ipv4Result.status === "fulfilled" ? ipv4Result.value.ip : null;
+      let ipv6 = ipv6Result.status === "fulfilled" ? ipv6Result.value.ip : null;
+      const profile = profileResult.status === "fulfilled" ? profileResult.value : null;
+      if (profile?.ip && !ipv4 && profile.ipVersion === "IPv4") ipv4 = profile.ip;
+      if (profile?.ip && !ipv6 && profile.ipVersion === "IPv6") ipv6 = profile.ip;
+      setFamily("ipv4", ipv4); setFamily("ipv6", ipv6);
+      if (profile) showProfile(profile);
+      const found = [ipv4, ipv6].filter(Boolean).length;
+      if (found && profile) setStatus(`${found === 2 ? "IPv4 and IPv6 addresses" : "Public IP address"} detected. Network details describe your active ${profile.ipVersion || "connection"} route.`);
+      else if (found) setStatus("Address detected, but detailed network information is temporarily unavailable.", true);
+      else setStatus("We couldn’t detect a public address. Check your connection, VPN, or browser privacy settings and try again.", true);
+      button.disabled = false;
+    };
+    button.addEventListener("click", load);
+    family.ipv4.copy.addEventListener("click", () => copyText(family.ipv4.value.textContent, "IPv4 address"));
+    family.ipv6.copy.addEventListener("click", () => copyText(family.ipv6.value.textContent, "IPv6 address"));
+    load();
   };
 
   const init = () => { const name = document.body.dataset.tool; const tools = { password, words, counter:wordCounter, subnet, json, timestamp, base64, url:urlCoder, numbers:randomNumber, ip }; if (tools[name]) tools[name](); };
