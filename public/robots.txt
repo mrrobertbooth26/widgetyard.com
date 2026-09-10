@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /api/hits
 
 Sitemap: https://widgetyard.com/sitemap.xml
