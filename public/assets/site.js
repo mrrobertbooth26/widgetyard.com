@@ -27,4 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
     filterTools();
   }
   chips.forEach((chip) => chip.addEventListener("click", () => { category = chip.dataset.filter; chips.forEach((item) => item.classList.toggle("is-active", item === chip)); filterTools(); }));
+  if (!document.body.hasAttribute("data-no-hit")) {
+    const payload = JSON.stringify({ path: location.pathname });
+    if (!(navigator.sendBeacon && navigator.sendBeacon("/api/hit", payload))) {
+      fetch("/api/hit", { method: "POST", body: payload, keepalive: true, headers: { "Content-Type": "text/plain" } }).catch(() => {});
+    }
+  }
 });
